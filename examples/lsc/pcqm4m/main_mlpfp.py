@@ -152,7 +152,7 @@ def main_mlp():
 
     device = torch.device("cuda:" + str(args.device)) if torch.cuda.is_available() else torch.device("cpu")
 
-    dataset = PCQM4MDataset(root='dataset/', only_smiles=True)
+    dataset = PCQM4MDataset(root='data/', only_smiles=True)
     fp_processed_file = preprocess_fp(dataset, args.radius)
 
     data_dict = torch.load(fp_processed_file)
