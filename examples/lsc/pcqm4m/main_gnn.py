@@ -6,6 +6,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torch.optim.lr_scheduler import StepLR
 
 from gnn import GNN
+from afp import AttentiveFP
 
 import os
 from tqdm import tqdm
@@ -150,6 +151,8 @@ def main():
         model = GNN(gnn_type = 'gcn', virtual_node = False, **shared_params).to(device)
     elif args.gnn == 'gcn-virtual':
         model = GNN(gnn_type = 'gcn', virtual_node = True, **shared_params).to(device)
+    elif args.gnn == 'afp':
+        model = AttentiveFP(num_timesteps=4, **shared_params).to(device)
     else:
         raise ValueError('Invalid GNN type')
 
